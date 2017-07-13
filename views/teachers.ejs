@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Teacher</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+  <div class="container"><br/><br/>
+    <h3 align="center">Welcome to</h3>
+    <h2 align="center">School of Coding</h2>
+    <ul class="pager" role="tablist">
+    <li role="presentation" class="active"><a href="/">Home</a></li>
+    <li role="presentation"><a href="/teachers">Teacher</a></li>
+    <li role="presentation"><a href="/students">Student</a></li>
+    <li role="presentation"><a href="/subjects">Subject</a></li>
+  </ul>
+  </div>
+  
+  <div class="container">
+  <h3>Show Data Teacher</h3>
+  <br>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>E-Mail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data_teachers.forEach(teacher => { %>
+    <tr>
+      <td><%= teacher.id %></td>
+      <td><%= teacher.first_name%></td>
+      <td><%= teacher.last_name%></td>
+      <td><%= teacher.email%></td>
+    </tr>
+    <% })%>
+  </tbody>
+</table>
+</div>
+  
+  
+
+</body>
+</html>

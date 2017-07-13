@@ -1,0 +1,19 @@
+{
+  "name": "sequelize_association",
+  "version": "1.0.0",
+  "description": "Sequelize - Association",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PDVega/sequelize_association.git"
+  },
+  "author": "pdvega",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PDVega/sequelize_association/issues"
+  },
+  "homepage": "https://github.com/PDVega/sequelize_association#readme"
+}
