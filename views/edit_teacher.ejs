@@ -42,11 +42,11 @@
           <label>Subject : </label>          
           <select class="form-control" name="SubjectId">
             <option value="<%= data_teachers.SubjectId%>" selected><%= data_teachers.Subject.subject_name%></option>
-    
+
             <% data_subjects.forEach(subject => { %>
               <% if(subject.id !== data_teachers.SubjectId){ %>
-                
-                <option value="<%= subject.id%>"><%= subject.subject_name%></option>
+          
+            <option value="<%= subject.id%>"><%= subject.subject_name%></option>
             <% }})%>
           </select>
           

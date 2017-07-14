@@ -93,4 +93,19 @@ router.get('/delete/:id', function(req, res, next) {
   })
 });
 
+
+router.get('/:id/addsubject', function(req, res, next){
+  let id = req.params.id
+  model.Student.findOne({
+    where : {id : id}
+  })
+  .then((student) => {
+    model.StudentSubject.findAll({
+      include : [{ all : true }]
+    })
+  .then()
+  })
+})
+  
+
 module.exports = router;
