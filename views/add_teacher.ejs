@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Add Student</title>
+  <title>Add Teacher</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -23,11 +23,9 @@
     </div>
     
     <div class="container">  
-      <h3>Input New Student</h3>
+      <h3>Input New Teacher</h3>
       
       <form action="/teachers/add" method="post">
-        <span><% if (err) {%> <%= err %> <%}%></span>
-        <br>
         <div class="form-group">  
           <label>First Name : </label>
           <input class="form-control" type="text" name="first_name" value="">
@@ -41,11 +39,11 @@
           <input class="form-control" type="text" name="email" value="">
         </div>
         <div class="form-group">
-          <label>Jurusan : </label>
+          <label>Subject : </label>
           <input class="form-control" type="text" name="jurusan" value="">
         </div>
           <br>
-        <button type="submit" name="" class="btn btn-default">Add New Student</button>
+        <button type="submit" name="" class="btn btn-default">Add New Teacher</button>
       </form>
     </div>
   </body>
