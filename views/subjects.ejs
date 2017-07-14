@@ -30,6 +30,7 @@
     <tr>
       <th>ID</th>
       <th>Subject Name</th>
+      <th>Teacher</th>
     </tr>
   </thead>
   <tbody>
@@ -37,6 +38,13 @@
     <tr>
       <td><%= subject.id %></td>
       <td><%= subject.subject_name%></td>
+      <td>
+          <ol>
+            <% subject.Teachers.forEach(teacher => { %>
+        <li><%= teacher.first_name + ' ' + teacher.last_name %><br></li>
+        <% })%>
+      </ol>
+    </td>
     </tr>
     <% })%>
   </tbody>

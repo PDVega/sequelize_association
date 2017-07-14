@@ -70,7 +70,7 @@ router.get('/', (req, res)=>{
 router.get('/add', (req, res, next) => {
   model.Subject.findAll()
   .then(data => {
-    console.log(data);
+    // console.log(data);
     res.render('add_teacher', {data_subjects : data, err:null })
   })
 })
