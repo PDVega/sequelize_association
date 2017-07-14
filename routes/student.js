@@ -18,21 +18,23 @@ router.get('/add', (req, res, next) => {
 })
 
 router.post('/add', (req, res, next) => {
-  let first_name = req.body.first_name
-  let last_name = req.body.last_name
-  let email = req.body.email
-  let jurusan = req.body.jurusan
-    model.Student.create({
-      'first_name':first_name,
-      'last_name':last_name,
-      'email':email,
-      'jurusan': jurusan
-      })
+  // let first_name = req.body.first_name
+  // let last_name = req.body.last_name
+  // let email = req.body.email
+  // let jurusan = req.body.jurusan
+    model.Student.create( req.body
+      // {
+      // 'first_name':first_name,
+      // 'last_name':last_name,
+      // 'email':email,
+      // 'jurusan': jurusan
+      // }
+    )
     .then((student) => {
       res.redirect('/students')
   })
   .catch((err)=>{
-    res.render('add_student', {err:err.message});
+    res.render('add_student', {errMsg :err.message});
   })
 })
 

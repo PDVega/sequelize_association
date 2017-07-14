@@ -20,12 +20,12 @@ router.post('/add', (req, res, next) => {
   let first_name = req.body.first_name
   let last_name = req.body.last_name
   let email = req.body.email
-  let subject_id = req.body.subject_id
+  let SubjectId = req.body.SubjectId
     model.Teacher.create({
       'first_name':first_name,
       'last_name':last_name,
       'email':email,
-      'subject_id': subject_id
+      'SubjectId': SubjectId
       })
     .then((teacher) => {
       res.redirect('/teachers')
@@ -48,14 +48,14 @@ router.post('/edit/:id', function(req, res, next) {
   let first_name = req.body.first_name
   let last_name = req.body.last_name
   let email = req.body.email
-  let subject_id = req.body.subject_id
+  let SubjectId = req.body.SubjectId
   model.Teacher.findById(id)
   .then(data_teachers => {
     data_teachers.update({
       'first_name': first_name, 
       'last_name':last_name,
       'email':email,
-      'subject_id':subject_id})
+      'SubjectId':SubjectId})
     .then(() => {
       res.redirect('/teachers')
     })

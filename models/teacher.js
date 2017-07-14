@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
           isEmail : {msg : 'Email format is incorrect!'}
       }
     },
-    subject_id: DataTypes.INTEGER
+    SubjectId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
