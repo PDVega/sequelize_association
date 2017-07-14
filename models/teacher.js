@@ -21,12 +21,10 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     SubjectId: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+  
+  Teacher.associate = (models) => {
+    Teacher.belongsTo(models.Subject);
+  }
   return Teacher;
 };

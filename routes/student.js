@@ -17,18 +17,31 @@ router.get('/add', (req, res, next) => {
   })
 })
 
+
+// router.post('/add', (req, res, next) => {
+//     model.Student.create( req.body
+//     )
+//     .then((student) => {
+//       res.redirect('/students')
+//   })
+//   .catch((err)=>{
+//     res.render('add_student', {errMsg :err.message});
+//   })
+// })
+
+//Perbedaan Penggunaan req.body dengan yang di atas
 router.post('/add', (req, res, next) => {
-  // let first_name = req.body.first_name
-  // let last_name = req.body.last_name
-  // let email = req.body.email
-  // let jurusan = req.body.jurusan
-    model.Student.create( req.body
-      // {
-      // 'first_name':first_name,
-      // 'last_name':last_name,
-      // 'email':email,
-      // 'jurusan': jurusan
-      // }
+  let first_name = req.body.first_name
+  let last_name = req.body.last_name
+  let email = req.body.email
+  let jurusan = req.body.jurusan
+    model.Student.create(
+      {
+      'first_name':first_name,
+      'last_name':last_name,
+      'email':email,
+      'jurusan': jurusan
+      }
     )
     .then((student) => {
       res.redirect('/students')
@@ -37,7 +50,6 @@ router.post('/add', (req, res, next) => {
     res.render('add_student', {errMsg :err.message});
   })
 })
-
 
 router.get('/edit/:id', function(req, res, next) {
   let id = req.params.id
@@ -67,8 +79,6 @@ router.post('/edit/:id', function(req, res, next) {
     })
   })
 });
-
-
 
 
 router.get('/delete/:id', function(req, res, next) {

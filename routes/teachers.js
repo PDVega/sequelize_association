@@ -4,10 +4,42 @@ const router = express.Router()
 const model = require('../models')
 
 router.get('/', (req, res)=>{
-  model.Teacher.findAll().then(data =>{
-    res.render('teachers', {data_teachers : data})
+  model.Teacher.findAll()
+  .then(arrTeacher => {
+    let promiseTeacher = arrTeacher.map(teacher => {
+      return new Promise((resolve, reject) => {
+        teacher.getSubject()
+        .then(subject => {
+          if(subject != null){
+            teacher.subject = subject.subject_name;
+          } else {
+            teacher.subject = 'unassigned';
+          }
+          return resolve(teacher)
+        })
+        .catch(err => reject(err))
+      })
+    })
+    
+    Promise.all(promiseTeacher)
+    .then(teacher => {
+      // teacher.forEach(data_teachers => {
+        // console.log(teacher);
+        res.render('teachers', {data_teachers : teacher})
+      // })
+    })
+    .catch(err => {
+      console.log(err);
+    })
   })
 })
+
+// router.get('/', (req, res)=>{
+//   model.Teacher.findAll()
+//   .then(data =>{
+//     res.render('teachers', {data_teachers : data})
+//   })
+// })
 
 router.get('/add', (req, res, next) => {
   model.Teacher.findAll()
@@ -17,16 +49,8 @@ router.get('/add', (req, res, next) => {
 })
 
 router.post('/add', (req, res, next) => {
-  let first_name = req.body.first_name
-  let last_name = req.body.last_name
-  let email = req.body.email
-  let SubjectId = req.body.SubjectId
-    model.Teacher.create({
-      'first_name':first_name,
-      'last_name':last_name,
-      'email':email,
-      'SubjectId': SubjectId
-      })
+    model.Teacher.create(req.body //hanya req.body apabila penulisan nama & value di ejs sama dengan di db
+    )
     .then((teacher) => {
       res.redirect('/teachers')
   })
