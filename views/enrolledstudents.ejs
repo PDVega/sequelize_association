@@ -29,6 +29,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th>No</th>
       <th>Student Name</th>
       <th>Score</th>
     </tr>
@@ -36,6 +37,7 @@
   <tbody>
     <% student_subject.forEach(subjects => { %>
     <tr>
+      <td><%=subjects.id %></td>
       <td><%= subjects.Student.first_name + ' ' + subjects.Student.last_name %></td>
       <%if(subjects.score == null){%>
       <td><a href="/subjects/<%= subjects.id%>/givescore/<%= subjects.SubjectId%>">Score</a></td>
