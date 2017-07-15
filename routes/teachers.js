@@ -4,7 +4,9 @@ const router = express.Router()
 const model = require('../models')
 
 router.get('/', (req, res)=>{
-  model.Teacher.findAll()
+  model.Teacher.findAll({
+    order : [['first_name', 'ASC']]
+  })
   .then(arrTeacher => {
     let promiseTeacher = arrTeacher.map(teacher => {
       return new Promise((resolve, reject) => {
