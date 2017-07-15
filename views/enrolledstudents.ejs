@@ -38,7 +38,7 @@
     <tr>
       <td><%= subjects.Student.first_name + ' ' + subjects.Student.last_name %></td>
       <%if(subjects.score == null){%>
-      <td><a href="/subjects/<%= subjects.id%>/givescore">Score</a></td>
+      <td><a href="/subjects/<%= subjects.id%>/givescore/<%= subjects.SubjectId%>">Score</a></td>
       <%} else { %>
       <td><%= subjects.score%></td>
       <%}%>
