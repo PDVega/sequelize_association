@@ -30,16 +30,19 @@
   <thead>
     <tr>
       <th>Student Name</th>
+      <th>Subject</th>
       <th>Score</th>
     </tr>
   </thead>
   <tbody>
-    <% student_subject.forEach(subjects => { %>
     <tr>
-      <td><%= subjects.Student.first_name + ' ' + subjects.Student.last_name %></td>
-      <td><a href="/subjects/<%= subjects.id%>/givescore">Score</a></td>
+      <td>Vega</td>
+      <td>Ekonomi</td>
+      <td><form action="#" method="post">
+        <input type="text" name="" value="">
+      </form></td>
     </tr>
-    <% })%>
+    
   </tbody>
 </table>
 </div>

@@ -59,7 +59,7 @@ router.get('/:id/givescore', (req, res, next) => {
       }, include : [model.Student]
     })
     .then(student_subject => {
-      res.send(student_subject)
+      res.render('givescore')
     })
   })
 })
