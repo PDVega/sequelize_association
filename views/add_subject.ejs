@@ -43,7 +43,10 @@
           <td>
             <form action="/students/<%= student.id%>/addsubject" method="post">
               <select class="form-control" name="SubjectId">
-                <option value="">Subject1</option>
+                <% data_subjects.forEach(subject => { %>
+                  
+                <option value="<%= subject.id%>"><%= subject.subject_name%></option>
+                <%})%>
               </select>
               <br>
               <button type="submit" name="button" class="btn btn-default">Add Subject to Student</button>

@@ -99,15 +99,29 @@ router.get('/:id/addsubject', function(req, res, next){
   model.Student.findOne({
     where : {id : id}
   })
-  .then((student) => {
-    // console.log(student);
-    res.render('add_subject', { student : student})
+  .then(student => {
+  model.Subject.findAll()
+  .then(data_subjects => {
+      // console.log(JSON.stringify(data_subjects, null, 2));
+      res.render('add_subject', { student : student, data_subjects : data_subjects})
+    })
   })
 })
 
-// router.post('/:id/addsubject', function(req, res, next){
-// 
-// })
+router.post('/:id/addsubject', function(req, res, next) {
+  model.StudentSubject.create({
+      SubjectId: req.body.SubjectId, 
+      StudentId: req.body.StudentId,
+      createdAt: new Date(),
+      updatedAd: new Date()
+    })
+    .then(() => {
+      res.redirect('/students')
+    })
+    .catch((err)=>{
+      res.render('add_student', {err:err.message});
+    })
+  })
   
 
 // router.get('/:id/addsubject', function(req, res, next){
