@@ -110,8 +110,8 @@ router.get('/:id/addsubject', function(req, res, next){
 
 router.post('/:id/addsubject', function(req, res, next) {
   model.StudentSubject.create({
+      StudentId: req.params.id,
       SubjectId: req.body.SubjectId, 
-      StudentId: req.body.StudentId,
       createdAt: new Date(),
       updatedAd: new Date()
     })

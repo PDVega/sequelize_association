@@ -23,7 +23,7 @@
   </div>
   
   <div class="container">
-  <h3>Subject Name : <strong><%= subject.subject_name %></strong></h3>
+  <h3>Input Student Score</h3>
   <h5><a href="/subjects">Return to Subject List</a></h5>
   <br>
 <table class="table table-hover">
@@ -37,11 +37,7 @@
     <% student_subject.forEach(subjects => { %>
     <tr>
       <td><%= subjects.Student.first_name + ' ' + subjects.Student.last_name %></td>
-      <%if(subjects.score == null){%>
       <td><a href="/subjects/<%= subjects.id%>/givescore">Score</a></td>
-      <%} else { %>
-      <td><%= subjects.score%></td>
-      <%}%>
     </tr>
     <% })%>
   </tbody>
