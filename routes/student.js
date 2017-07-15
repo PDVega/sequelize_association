@@ -100,12 +100,31 @@ router.get('/:id/addsubject', function(req, res, next){
     where : {id : id}
   })
   .then((student) => {
-    model.StudentSubject.findAll({
-      include : [{ all : true }]
-    })
-  .then()
+    // console.log(student);
+    res.render('add_subject', { student : student})
   })
 })
+
+// router.post('/:id/addsubject', function(req, res, next){
+// 
+// })
   
+
+// router.get('/:id/addsubject', function(req, res, next){
+//   let id = req.params.id
+//   model.Student.findOne({
+//     where : {id : id}
+//   })
+//   .then((student) => {
+//   //   model.StudentSubject.findAll({
+//   //     include : [{ all : true }]
+//   //   })
+//   // .then((student_subject) => {
+//     res.render('add_subject', { data : student})
+//   })
+//   // })
+// })
+
+
 
 module.exports = router;

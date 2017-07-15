@@ -85,7 +85,14 @@ router.get('/add', (req, res, next) => {
 
 
 router.post('/add', (req, res, next) => {
-    model.Teacher.create(req.body //hanya req.body apabila penulisan nama & value di ejs sama dengan di db
+    // model.Teacher.create(req.body //hanya req.body apabila penulisan nama & value di ejs sama dengan di db
+    model.Teacher.create(
+      {
+      'first_name' : req.body.first_name,
+      'last_name' : req.body.last_name,
+      'email' : req.body.email,
+      'SubjectId' : req.body.SubjectId
+    }
     )
     .then((teacher) => {
       res.redirect('/teachers')

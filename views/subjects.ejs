@@ -31,6 +31,7 @@
       <th>ID</th>
       <th>Subject Name</th>
       <th>Teacher</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -40,11 +41,12 @@
       <td><%= subject.subject_name%></td>
       <td>
           <ol>
-            <% subject.Teachers.forEach(teacher => { %>
-              <li><%= teacher.first_name + ' ' + teacher.last_name %><br></li>
-              <% })%>
+                <% subject.Teachers.forEach(teacher => { %>
+                <li><%= teacher.first_name + ' ' + teacher.last_name %></li> 
+                <% })%>
           </ol>
     </td>
+    <td><a href="/subjects/<%=subject.id%>/enrolledstudents">Enrolled Student</a></td>
     </tr>
     <% })%>
   </tbody>
