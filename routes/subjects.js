@@ -18,5 +18,18 @@ router.get('/', (req, res, next)=>{
   })
 })
 
+router.get('/:id/enrolledstudents', (req, res, next) => {
+  let id = req.params.id
+  model.Subject.findOne({
+    where : { id : id }
+  })
+  .then(subject => {
+  model.Student.findAll()
+  .then(data_students => {
+    res.render('enrolledstudents', {subject : subject, data_students : data_students})
+  })
+  })
+})
+
 
 module.exports = router;
