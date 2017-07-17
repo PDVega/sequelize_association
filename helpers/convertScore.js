@@ -5,7 +5,7 @@ module.exports = value => {
     if(student_subject.score > 70 && student_subject.score <=85) {giveScore.push('B');}
     if(student_subject.score > 55 && student_subject.score <= 70) {giveScore.push('C');}
     if(student_subject.score <= 55 && student_subject.score > 0) {giveScore.push('C');}
-    if(student_subject.score === null) {giveScore.push('-')}
+    if(student_subject.score === null) {giveScore.push('empty')}
   })
   return giveScore;
 }
