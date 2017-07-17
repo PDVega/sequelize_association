@@ -3,6 +3,14 @@ const router = express.Router()
 
 const model = require('../models')
 
+router.use((req,res, next)=>{
+  if(req.session.user.role == 'headmaster'){
+    next();
+  }else{
+    res.send('You have to login as Headmaster');
+  }
+})
+
 router.get('/', (req, res)=>{
   model.Teacher.findAll({
     order : [['first_name', 'ASC']]
@@ -36,39 +44,6 @@ router.get('/', (req, res)=>{
   })
 })
 
-// router.get('/', (req, res)=>{
-//   model.Teacher.findAll()
-//   .then(data =>{
-//     res.render('teachers', {data_teachers : data})
-//   })
-// })
-
-// router.get('/add', (req, res, next) => {
-//   model.Teacher.findAll()
-//   .then(arrTeacher => {
-//     let promiseTeacher = arrTeacher.map(teacher => {
-//       return new Promise((resolve, reject) => {
-//         teacher.getSubject()
-//         .then(subject => {
-//           teacher.SubjectId = subject.id
-//           teacher.subject = subject.subject_name
-//           return resolve(teacher)
-//         })
-//         .catch(err => reject(err))
-//       })
-//     })
-//     
-//     Promise.all(promiseTeacher)
-//     .then(teacher => {
-//       // console.log(teacher);
-//       res.render('add_teacher', {data_teachers : teacher})
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     })
-//   })
-// })
-
 router.get('/add', (req, res, next) => {
   model.Subject.findAll()
   .then(data => {
@@ -76,14 +51,6 @@ router.get('/add', (req, res, next) => {
     res.render('add_teacher', {data_subjects : data, err:null })
   })
 })
-
-// router.get('/add', (req, res, next) => {
-//   model.Teacher.findAll()
-//   .then(data => {
-//     console.log(data);
-//     res.render('add_teacher', {data_teachers : data, err:null })
-//   })
-// })
 
 
 router.post('/add', (req, res, next) => {
@@ -119,13 +86,6 @@ router.get('/edit/:id', function(req, res, next) {
       })
     })
 });
-
-// router.get('/edit/:id', function(req, res, next) {
-//   let id = req.params.id
-//     model.Teacher.findOne({ where: {id : id}}).then(data_teachers => {
-//       res.render('edit_teacher', { data_teachers : data_teachers})
-//     })
-// });
 
 router.post('/edit/:id', function(req, res, next) {
   let id = req.params.id
