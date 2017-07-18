@@ -88,7 +88,14 @@ router.get('/delete/:id', function(req, res, next) {
     }
   })
   .then(() => {
-    res.redirect('/students')
+    model.StudentSubject.destroy({
+      where : {
+        StudentId : id
+      }
+    })
+    .then(() => {
+      res.redirect('/students')
+    })
   })
 });
 
