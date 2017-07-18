@@ -7,6 +7,7 @@ const index = require('./routes/index');
 const teachers = require('./routes/teachers')
 const subjects = require('./routes/subjects')
 const students = require('./routes/student')
+const user = require('./routes/register')
 
 app.set('view engine', 'ejs');
 
@@ -22,6 +23,7 @@ app.use(session({
   // cookie : { secure : true }
 }))
 
+app.use('/register', user);
 app.use('/', index)
 
 app.use((req, res, next) => {
